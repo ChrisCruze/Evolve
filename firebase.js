@@ -1,4 +1,5 @@
 import * as firebase from "firebase";
+import "firebase/auth";
 
 var firebaseConfig = {
   apiKey: "AIzaSyA8CayNjq_3waCPH533_Haij8scNzIM_H8",
@@ -26,4 +27,32 @@ export function firebase_sign_in_anonymous() {
     .signInAnonymously()
     .then(response => console.log({ response }))
     .catch(error => console.log({ error }));
+}
+
+export function firebase_sign_up_anonymous({ email, password }) {
+  return firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(response => console.log({ response }))
+    .catch(error => console.log({ error }));
+}
+
+export function firebase_sign_in({ email, password }) {
+  return firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(response => console.log({ response }))
+    .catch(error => console.log({ error }));
+}
+
+export function firebase_sign_out() {
+  return firebase
+    .auth()
+    .signOut()
+    .then(response => {
+      console.log({ response });
+    })
+    .catch(err => {
+      console.log({ err });
+    });
 }

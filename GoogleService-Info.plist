@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>408948735077-btkndnpegdqnqjf9315p1h81nivmdl1v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.408948735077-btkndnpegdqnqjf9315p1h81nivmdl1v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUf93gYb9SnooLWUWsNsqPPUGtmnWXI6U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>408948735077</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.evolve.app</string>
+	<key>PROJECT_ID</key>
+	<string>evolve-6b9a3</string>
+	<key>STORAGE_BUCKET</key>
+	<string>evolve-6b9a3.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:408948735077:ios:76fdbd16d544aeb1ac5a8c</string>
+	<key>DATABASE_URL</key>
+	<string>https://evolve-6b9a3.firebaseio.com</string>
+</dict>
+</plist>
