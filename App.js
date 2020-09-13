@@ -3,12 +3,17 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import { firebase_sign_in_anonymous, firebase_sign_up_anonymous, firebase_sign_in, firebase_sign_out } from "./firebase";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Feather } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
 
 import Welcome from "./Components/Pages/Welcome";
+import Login from "./Components/Pages/Login";
+import SignUpEmail from "./Components/Pages/SignUpEmail";
+import SignUpPassword from "./Components/Pages/SignUpPassword";
 
 const SFProTextMedium = require("./assets/fonts/SF-Pro-Text-Medium.otf");
 const SFProTextHeavy = require("./assets/fonts/SF-Pro-Text-Heavy.otf");
@@ -67,10 +72,20 @@ const StackNavigatorOptions = {
     backgroundColor: "white"
   }
 };
+
+const SignUpNavigator = createStackNavigator(
+  {
+    SignUpEmail: { screen: SignUpEmail },
+    SignUpPassword: { screen: SignUpPassword }
+  },
+  StackNavigatorOptions
+);
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
     {
-      Welcome: { screen: Welcome }
+      Welcome: { screen: Welcome },
+      Login: { screen: Login },
+      SignUp: { screen: SignUpNavigator }
     },
     StackNavigatorOptions
   )
