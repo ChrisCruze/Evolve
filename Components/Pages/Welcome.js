@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { StyleSheet, Dimensions, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, Dimensions, TouchableOpacity, View } from "react-native";
 import Container from "../Elements/Container";
 import Theme from "../Elements/Theme";
-// import Text from "../Elements/Text";
+import Text from "../Elements/Text";
 import Button from "../Elements/Button";
 
 const Welcome = ({ navigation }) => {
