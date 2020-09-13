@@ -29,20 +29,12 @@ export function firebase_sign_in_anonymous() {
     .catch(error => console.log({ error }));
 }
 
-export function firebase_sign_up_anonymous({ email, password }) {
-  return firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(response => console.log({ response }))
-    .catch(error => console.log({ error }));
+export function firebase_sign_up({ email, password }) {
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
 export function firebase_sign_in({ email, password }) {
-  return firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(response => console.log({ response }))
-    .catch(error => console.log({ error }));
+  return firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
 export function firebase_sign_out() {

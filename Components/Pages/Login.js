@@ -3,6 +3,7 @@ import { AsyncStorage, Dimensions, StyleSheet, Text } from "react-native";
 import { Snackbar } from "react-native-paper";
 import { TextField } from "../Elements/Fields";
 import SignUpContainer from "../Layouts/SignUpContainer";
+import { firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "../../firebase";
 
 const Login = ({ navigation }) => {
   const [loading, updateLoading] = useState(false);
@@ -25,6 +26,20 @@ const Login = ({ navigation }) => {
       setVisible(1);
     } else {
       updateLoading(true);
+      firebase_sign_in({ email, password })
+        .then(() => {
+          navigation.navigate("Welcome");
+        })
+        .catch(error => {
+          updateLoading(false);
+          console.log({ error });
+          if (error.message === "Request failed with status code 404") {
+            setMessage("User not found");
+          } else if (error.message === "Request failed with status code 401") {
+            setMessage("Incorrect Password");
+          }
+          setVisible(1);
+        });
     }
   };
 

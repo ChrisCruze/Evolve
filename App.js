@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
-import { firebase_sign_in_anonymous, firebase_sign_up_anonymous, firebase_sign_in, firebase_sign_out } from "./firebase";
+import { firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "./firebase";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
