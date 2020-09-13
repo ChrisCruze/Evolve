@@ -6,7 +6,6 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
 import { Feather } from "@expo/vector-icons";
-
 import { Asset } from "expo-asset";
 
 import Welcome from "./Components/Pages/Welcome";
