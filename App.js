@@ -14,6 +14,7 @@ import Welcome from "./Components/Pages/Welcome";
 import Login from "./Components/Pages/Login";
 import SignUpEmail from "./Components/Pages/SignUpEmail";
 import SignUpPassword from "./Components/Pages/SignUpPassword";
+import Home from "./Components/Pages/Home";
 
 const SFProTextMedium = require("./assets/fonts/SF-Pro-Text-Medium.otf");
 const SFProTextHeavy = require("./assets/fonts/SF-Pro-Text-Heavy.otf");
@@ -85,7 +86,8 @@ const AppNavigator = createAppContainer(
     {
       Welcome: { screen: Welcome },
       Login: { screen: Login },
-      SignUp: { screen: SignUpNavigator }
+      SignUp: { screen: SignUpNavigator },
+      Home: { screen: Home }
     },
     StackNavigatorOptions
   )
@@ -104,7 +106,7 @@ export default App;
 //       </TouchableWithoutFeedback>
 //       <TouchableWithoutFeedback
 //         onPress={() => {
-//           firebase_sign_up_anonymous({ email: "Cruzc09@gmail.com", password: "password@123" });
+//           firebase_sign_up({ email: "Cruzc09@gmail.com", password: "password@123" });
 //         }}
 //       >
 //         <Text>Sign Up</Text>

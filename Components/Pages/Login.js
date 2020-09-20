@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
       updateLoading(true);
       firebase_sign_in({ email, password })
         .then(() => {
-          navigation.navigate("Welcome");
+          navigation.navigate("Home");
         })
         .catch(error => {
           updateLoading(false);
