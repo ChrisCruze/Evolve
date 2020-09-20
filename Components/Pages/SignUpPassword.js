@@ -4,7 +4,8 @@ import SignUpContainer from "../Layouts/SignUpContainer";
 import { TextField } from "../Elements/Fields";
 import { AsyncStorage, Dimensions, StyleSheet, Text } from "react-native";
 import { Snackbar } from "react-native-paper";
-import { firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "../../firebase";
+
+import { firebase, firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "../../firebase";
 
 const SignUpPassword = ({ navigation }) => {
   const [password, updatePassword] = useState("");
@@ -31,8 +32,21 @@ const SignUpPassword = ({ navigation }) => {
     } else {
       firebase_sign_up({ email, password })
         .then(response => {
-          console.log({ response });
-          navigation.navigate("Welcome");
+          const uid = response.user.uid;
+          const data = {
+            id: uid,
+            email
+          };
+          const usersRef = firebase.firestore().collection("users");
+          usersRef
+            .doc(uid)
+            .set(data)
+            .then(() => {
+              navigation.navigate("Home", { user: data });
+            })
+            .catch(error => {
+              alert(error);
+            });
         })
         .catch(error => {
           console.log({ error });

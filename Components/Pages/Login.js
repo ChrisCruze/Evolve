@@ -3,7 +3,7 @@ import { AsyncStorage, Dimensions, StyleSheet, Text } from "react-native";
 import { Snackbar } from "react-native-paper";
 import { TextField } from "../Elements/Fields";
 import SignUpContainer from "../Layouts/SignUpContainer";
-import { firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "../../firebase";
+import { firebase, firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "../../firebase";
 
 const Login = ({ navigation }) => {
   const [loading, updateLoading] = useState(false);
@@ -27,8 +27,23 @@ const Login = ({ navigation }) => {
     } else {
       updateLoading(true);
       firebase_sign_in({ email, password })
-        .then(() => {
-          navigation.navigate("Home");
+        .then(response => {
+          const uid = response.user.uid;
+          const usersRef = firebase.firestore().collection("users");
+          usersRef
+            .doc(uid)
+            .get()
+            .then(firestoreDocument => {
+              if (!firestoreDocument.exists) {
+                alert("User does not exist anymore.");
+                return;
+              }
+              const user = firestoreDocument.data();
+              navigation.navigate("Home", { user: user });
+            })
+            .catch(error => {
+              alert(error);
+            });
         })
         .catch(error => {
           updateLoading(false);

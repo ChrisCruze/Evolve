@@ -1,5 +1,6 @@
 import * as firebase from "firebase";
 import "firebase/auth";
+import "@firebase/firestore";
 
 var firebaseConfig = {
   apiKey: "AIzaSyA8CayNjq_3waCPH533_Haij8scNzIM_H8",
@@ -48,3 +49,5 @@ export function firebase_sign_out() {
       console.log({ err });
     });
 }
+
+export { firebase };
