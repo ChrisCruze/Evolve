@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import { firebase_sign_in_anonymous, firebase_sign_up, firebase_sign_in, firebase_sign_out } from "./firebase";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { AppLoading } from "expo";
 import * as Font from "expo-font";
@@ -15,6 +16,8 @@ import Login from "./Components/Pages/Login";
 import SignUpEmail from "./Components/Pages/SignUpEmail";
 import SignUpPassword from "./Components/Pages/SignUpPassword";
 import Home from "./Components/Pages/Home";
+import HomeTab from "./Components/Pages/HomeTab";
+import CreateGoal from "./Components/Pages/CreateGoal";
 
 const SFProTextMedium = require("./assets/fonts/SF-Pro-Text-Medium.otf");
 const SFProTextHeavy = require("./assets/fonts/SF-Pro-Text-Heavy.otf");
@@ -81,13 +84,25 @@ const SignUpNavigator = createStackNavigator(
   },
   StackNavigatorOptions
 );
+
+const BottomNavigator = createBottomTabNavigator(
+  {
+    Home: { screen: Home },
+    createGoal: { screen: CreateGoal }
+  },
+  {
+    animationEnabled: true,
+    tabBarComponent: HomeTab,
+    tabBarPosition: "bottom"
+  }
+);
 const AppNavigator = createAppContainer(
   createSwitchNavigator(
     {
       Welcome: { screen: Welcome },
       Login: { screen: Login },
       SignUp: { screen: SignUpNavigator },
-      Home: { screen: Home }
+      BottomNavigator: { screen: BottomNavigator }
     },
     StackNavigatorOptions
   )
